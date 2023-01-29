@@ -189,7 +189,7 @@ let run ?(socket_backlog = 128) ?(domains = 1) ~port env handler =
   Switch.run @@ fun sw ->
   let domain_mgr = Eio.Stdenv.domain_mgr env in
   let ssock =
-    Eio.Net.listen (Eio.Stdenv.net env) ~sw ~reuse_addr:true ~reuse_port:true
+    Eio.Net.listen (Eio.Stdenv.net env) ~sw ~reuse_addr:true ~reuse_port:false
       ~backlog:socket_backlog
       (`Tcp (Eio.Net.Ipaddr.V4.any, port))
   in
